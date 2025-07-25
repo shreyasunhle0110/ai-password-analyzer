@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/pwned/:hash", "destination": "https://api.pwnedpasswords.com/range/:hash" }
+  ]
+}

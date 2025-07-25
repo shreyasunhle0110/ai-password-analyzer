@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Aware Password Strength Analyzer</title>
+    <!-- Design system styles injected in style.css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- zxcvbn password strength estimator -->
+    <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="py-16">
+      <div class="container">
+        <h1 class="text-center">AI-Aware Password Strength Analyzer</h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="card" aria-live="polite">
+        <div class="card__body flex flex-col gap-16">
+          <!-- Password input -->
+          <div class="form-group">
+            <label for="pwd" class="form-label">Enter password to evaluate</label>
+            <input
+              type="password"
+              id="pwd"
+              class="form-control"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="pwdHelp"
+              aria-live="off"
+            />
+            <div id="pwdHelp" class="text-sm text-secondary mt-8">
+              We never store your password; all processing is done locally.
+            </div>
+          </div>
+
+          <!-- Strength bar -->
+          <section id="strengthSection">
+            <h2 class="sr-only">Password strength</h2>
+            <div class="strength-bar" aria-hidden="true">
+              <div class="strength-bar__fill" id="strengthFill"></div>
+            </div>
+            <p id="strengthLabel" class="mt-8" aria-live="polite"></p>
+          </section>
+
+          <!-- Crack time estimate -->
+          <section>
+            <h2 class="sr-only">Crack time estimate</h2>
+            <p>
+              Estimated crack time: <strong id="crackTime">–</strong>
+            </p>
+          </section>
+
+          <!-- Breach status -->
+          <section>
+            <h2 class="sr-only">Breach status</h2>
+            <div id="breachStatus" class="status status--info">Waiting…</div>
+          </section>
+
+          <!-- AI insights -->
+          <section>
+            <h2>AI Insights</h2>
+            <ul id="aiInsights" class="list-disc"></ul>
+          </section>
+
+          <!-- Suggestions -->
+          <section>
+            <h2>Suggestions</h2>
+            <ul id="suggestions" class="list-disc"></ul>
+          </section>
+
+          <!-- Copy button -->
+          <div class="flex justify-end">
+            <button id="copyBtn" class="btn btn--primary" disabled>
+              📋 Copy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast notification -->
+      <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
