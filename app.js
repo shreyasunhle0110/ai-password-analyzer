@@ -22,6 +22,7 @@ async function sha1Hex(str) {
 
 // DOM elements
 const pwdInput = document.getElementById('pwd');
+const togglePwd = document.getElementById('togglePwd');
 const strengthFill = document.getElementById('strengthFill');
 const strengthLabel = document.getElementById('strengthLabel');
 const crackTimeEl = document.getElementById('crackTime');
@@ -187,4 +188,13 @@ copyBtn.addEventListener('click', async () => {
   } catch {
     showToast('Unable to copy');
   }
+});
+
+// Password visibility toggle
+togglePwd.addEventListener('click', () => {
+  const isPassword = pwdInput.type === 'password';
+  pwdInput.type = isPassword ? 'text' : 'password';
+  togglePwd.setAttribute('aria-label', isPassword ? 'Hide password' : 'Show password');
+  togglePwd.setAttribute('title', isPassword ? 'Hide password' : 'Show password');
+  togglePwd.innerHTML = isPassword ? '🙈' : '👁️';
 });
