@@ -1,124 +1,86 @@
-AI Password Analyzer
-A simple, client-side web app that evaluates the strength of a password using AI-like heuristics and provides actionable feedback to help create stronger passwords.
+**AI Password Analyzer**
 
-Live Demo: ai-password-analyzer.vercel.app
+A fast, client‑side password strength analyzer with real‑time feedback and practical suggestions to help users create stronger passwords.
 
-Tech Stack: HTML, CSS, JavaScript
-
-Deployment: Vercel
+- Demo: ai-password-analyzer.vercel.app
+- Stack: HTML, CSS, JavaScript
+- Hosting: Static (Vercel-friendly)
 
 Features
-Real-time password strength analysis (e.g., length, character variety, common patterns)
 
-Visual strength meter with color-coded feedback
+- Real-time strength meter with color-coded feedback
+- Heuristic analysis: length, character diversity, common patterns, sequences, repeats
+- Actionable suggestions to improve weak passwords
+- 100% client-side (no passwords leave the browser)
+- Clean, responsive UI
 
-Suggestions to improve weak passwords
+Quick Start
 
-Fully client-side (no passwords are sent to a server)
+- Clone: git clone https://github.com/shreyasunhle0110/ai-password-analyzer.git
+- Open locally: open index.html in your browser
+- Or serve locally:
+  - Python: python3 -m http.server 8080
+  - Node: npx http-server -p 8080
+- Visit: http://localhost:8080
 
-Responsive, minimalist UI
+Deploy
 
-Project Structure
-index.html — App layout and UI
-
-style.css — Styling and responsive design
-
-app.js — Password analysis logic and interactivity
-
-vercel.json — Vercel deployment configuration
-
-Getting Started
-Prerequisites
-Any modern web browser
-
-Optional: Node.js and Vercel CLI for deployment
-
-Run Locally
-Clone the repository:
-
-git clone https://github.com/shreyasunhle0110/ai-password-analyzer.git
-
-cd ai-password-analyzer
-
-Open index.html directly in a browser, or serve it locally:
-
-Python: python3 -m http.server 8080
-
-Node (http-server): npx http-server -p 8080
-
-Visit http://localhost:8080
-
-Deploy to Vercel
-Sign in to Vercel and import the repo, or:
-
-vercel
-
-This is a static site; no special build step is required.
+- Vercel (recommended): vercel in the repo root, or import the GitHub repo in the Vercel dashboard
+- No build step required (static site)
 
 How It Works
-The analyzer scores a password using common-strength heuristics:
 
-Length (short passwords are penalized; longer ones are rewarded)
+- Scores password based on:
+  - Length (longer is stronger)
+  - Character variety (upper, lower, digits, symbols)
+  - Pattern detection (e.g., 1234, qwerty, repeated chars)
+  - Optional dictionary/common-password checks (if enabled)
+- Maps score to strength levels (e.g., Weak, Fair, Good, Strong) and displays suggestions
 
-Character diversity (uppercase, lowercase, digits, symbols)
+Project Structure
 
-Pattern detection (sequences like 1234, qwerty, repeated characters)
-
-Dictionary/common password checks (if implemented)
-
-Final score is mapped to strength categories (e.g., Weak, Medium, Strong) and color-coded.
-
-Note: The app runs entirely in the browser and does not store or transmit passwords.
+- index.html — UI and layout
+- style.css — Styling and responsive design
+- app.js — Scoring logic and interactivity
+- vercel.json — Static deploy configuration
 
 Usage
-Type a password in the input field.
 
-Watch the strength meter update in real-time.
-
-Follow the suggestions below the meter to improve strength.
-
-Use the generated guidance to create a more secure password.
+- Type a password in the input
+- Watch the meter and messages update in real-time
+- Apply suggestions to improve strength
 
 Security Notes
-Never reuse passwords across websites.
 
-Prefer passphrases (4–5 random words) or a random 16+ character password.
-
-Use a reputable password manager to generate and store credentials.
-
-Enable multi-factor authentication wherever possible.
+- Passwords are processed only in your browser; nothing is stored or sent
+- Use unique passwords per site
+- Prefer long passphrases (e.g., 4–5 random words) or 16+ character random passwords
+- Use a password manager and enable MFA where available
 
 Customization
-Tweak scoring rules in app.js to fit specific policies.
 
-Adjust minimum length or required character classes.
-
-Modify UI colors and meter thresholds in style.css.
-
-Add custom dictionaries or blocklists (e.g., company-specific banned patterns).
+- Tweak scoring rules and thresholds in app.js
+- Adjust minimum length or required character classes
+- Change meter colors and breakpoints in style.css
+- Add custom dictionaries or blocklists for organization-specific policies
 
 Roadmap
-Add zxcvbn-based scoring option for improved accuracy
 
-Toggle to show/hide password
-
-Optional offline dictionary checks
-
-i18n for feedback messages
-
-Unit tests for scoring functions
+- Optional zxcvbn-based scoring
+- Show/hide password toggle
+- Offline dictionary checks
+- i18n for feedback messages
+- Unit tests for scoring utilities
 
 Contributing
-Contributions are welcome:
 
-Fork the repo
+- Fork and create a feature branch: git checkout -b feature/my-change
+- Commit: git commit -m "Describe your change"
+- Push: git push origin feature/my-change
+- Open a pull request with a brief description and screenshots for UI changes
 
-Create a feature branch: git checkout -b feature/my-improvement
+Troubleshooting
 
-Commit changes: git commit -m "Add improvement"
-
-Push to branch: git push origin feature/my-improvement
-
-Open a pull request
-
-Please keep PRs focused and include brief descriptions and screenshots if UI changes are involved.
+- Blank styles or scripts: verify index.html references to style.css and app.js
+- Local server not loading: ensure you’re serving the folder root and visiting the correct port
+- Vercel 404: confirm vercel.json and that index.html is at the project root
